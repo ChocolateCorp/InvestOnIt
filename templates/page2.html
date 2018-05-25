@@ -7,22 +7,26 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
+
+<style>
 body {
     background-color: #93B874;
+}
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 </style>
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">TYI</a>
     </div>
     <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="page2">Amount invested/Investors</a></li>
+      <li><a href="home">Home</a></li>
+      <li class="active"><a href="#">Amount invested/Investors</a></li>
       <li><a href="page3">Amount spent/Transactions</a></li>
       <li><a href="page4">Balance/Project updates</a></li>
       <li class="logout"><a href="/logout">Log out</a></li>
@@ -31,15 +35,26 @@ body {
     </ul>
   </div>
 </nav>
+  
 <div class="container">
-  <h1 style="color:blue;">Profile</h1>
-  <p><b>All the details of the investor</b></p>
-</div>
-
-
-<div class="container">
-  <h1 style="color:red;">My Investment</h1>
-  <p><b>Date and Amount investor invested</b></p>
+  <h1 style="color:blue;">List of Investors and Amount Invested</h1>
+  <table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Amount invested</th>
+  </tr>
+  <tr>
+    <td>Sharan</td>
+    <td>Babu</td>
+    <td>5,00,000/-</td>
+  </tr>
+  <tr>
+    <td>Chetana</td>
+    <td>Singh</td>
+    <td>9,40,000/-</td>
+  </tr>
+</table>
 </div>
 
 </body>
