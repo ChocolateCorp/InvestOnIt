@@ -1,4 +1,4 @@
-from flask import Flask, render_template,session, redirect, url_for, escape, request
+from flask import Flask, render_template,session, redirect, url_for, escape, request,make_response
 app = Flask(__name__)
 
 
@@ -11,37 +11,42 @@ def index():
 
 @app.route('/login', methods = ['GET', 'POST'])
 def login():
-   if request.method == 'POST':
+   if request.method == 'POST' :
       session['username'] = request.form['username']
       username = request.form['username']
       password = request.form['password']
       if(username == 'sharan' and password=='dinesh'):
-      	username = username.capitalize()
-      	return render_template('home.html',username=username)
-
+         username = username.capitalize()
+         return render_template('home.html',username=username)
+      elif (request.cookies.get('username') != ''):
+         name = request.cookies.get('username')
+         passwordC = request.cookies.get('password')
+         if(username == name and password== passwordC):
+            username = name.capitalize()
+            return render_template('home.html',username=username)
       else:
-      	return "INVALID LOGIN CREDENTIALS"
+         return "INVALID LOGIN CREDENTIALS"
+
+
+      
 
 
 @app.route('/newsignup',methods=['GET','POST'])
 def newsignup():
    # print("hello")
    if request.method == 'POST':
-      username = request.form['email']
+      username = request.form['username']
       password = request.form['psw']
       passwordRepeat = request.form['psw-repeat']
-      print(username,password,passwordRepeat)
-      return "hello"
+      resp = make_response(render_template('index.html'))
+      resp.set_cookie('username' , username)
+      resp.set_cookie('password' , password)
+      return resp
+      
 @app.route('/signup')
 def register():
    return render_template("signup.html")
-   # print("hello")
-   # if request.method == 'POST':
-   #    username = request.form['email']
-   #    password = request.form['psw']
-   #    passwordRepeat = request.form['psw-repeat']
-   #    print(username,password,passwordRepeat)
-   #    return "hello"
+
 
 @app.route('/home')
 def home():
@@ -62,6 +67,10 @@ def page4():
 @app.route('/logout')
 def logout():
    # remove the username from the session if it is there
+   resp = make_response(render_template('index.html'))
+   resp.delete_cookie('username')
+   print("resp deleted" , resp)
+   resp.delete_cookie('password')
    session.pop('username', None)
    return redirect(url_for('index'))
 

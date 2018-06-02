@@ -1,33 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Welcome</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-body {
-    background-color: #93B874;
-}
-</style>
-</head>
-<body>
 
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">TYI</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="#">Home</a></li>
-      <li><a href="page2">Amount invested/Investors</a></li>
-      <li><a href="page3">Amount spent/Transactions</a></li>
-      <li><a href="page4">Balance/Project updates</a></li>
-      <li class="logout"><a href="/logout">Log out</a></li>
-      <li style="float: right;"><a href="#">{{username}}</a
+<head>
+    <title>Welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+    .containerImg {
+        position: relative;
+        width: 138px;
+    }
+
+    .image {
+        opacity: 1;
+        display: block;
+        width: 46px;
+        transition: .5s ease;
+        backface-visibility: hidden;
+    }
+
+    .middle {
+        transition: .5s ease;
+        opacity: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        text-align: center;
+    }
+
+    .containerImg:hover .image {
+        opacity: 0.3;
+    }
+
+    .containerImg:hover .middle {
+        opacity: 1;
+    }
+
+    .text {
+        background-color: black;
+        color: white;
+        font-size: 16px;
+        padding: 5px 10px;
+    }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <div class="containerImg">
+                    <img src="{{url_for('static',filename='images/user.png' )}}" alt="Avatar" class="image">
+                    <div class="middle">
+                        <div class="text">{{username}}</div>
+                    </div>
+                </div>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="page2">Amount invested/Investors</a></li>
+                <li><a href="page3">Amount spent/Transactions</a></li>
+                <li><a href="page4">Balance/Project updates</a></li>
+                <li style="margin-left: 387px;"><a href="/logout">Log out</a
         ></li>
+        
     </ul>
   </div>
 </nav>
