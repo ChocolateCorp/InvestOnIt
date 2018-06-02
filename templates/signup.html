@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Welcome</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' ,filename='css/style.css')}}" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+    input[type=checkbox] {
+        width: 3%;
+        margin-bottom: 10px;
+        background: rgba(0, 0, 0, 0.3);
+        border: none;
+        outline: none;
+        padding: 10px;
+        font-size: 13px;
+        color: #fff;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        /* box-shadow: inset 0 -5px 45px rgba(100, 100, 100, 0.2), 0 1px 1px rgba(255, 255, 255, 0.2); */
+        -webkit-transition: box-shadow .5s ease;
+        -moz-transition: box-shadow .5s ease;
+        -o-transition: box-shadow .5s ease;
+        -ms-transition: box-shadow .5s ease;
+        transition: box-shadow .5s ease;
+    }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+
+    function matchPassword() {
+        var pass = document.getElementById("password");
+        var cpass = document.getElementById("confirm_password")
+        if ($('#password').val() == $('#confirm_password').val()) {
+            $('#message').html('Matching').css('color', 'green');
+        } else
+            $('#message').html('Not Matching').css('color', 'red');
+    }
+    </script>
+</head>
+
+<body>
+    <form action="/newsignup" method="POST">
+        <div>
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <center>
+                            <h4 class="modal-title"><b>Sign Up</b></h4></center>
+                    </div>
+                    <div class="modal-body">
+                        <p>Please fill in this form to create an account.</p>
+                        <hr>
+                        <div class="form-group">
+                            <label for="email"><b>Email</b></label>
+                            <input type="text" class="form-control" placeholder="Enter Email" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="psw"><b>Password</b></label>
+                            <input id="password" class="form-control" type="password" placeholder="Enter Password" name="psw">
+                            <span><input type="checkbox" onclick="myFunction()">Show Password</span>
+                        </div>
+                        <div class="form-group">
+                            <label for="psw-repeat"><b>Repeat Password</b></label>
+                            <input id="confirm_password" class="form-control" type="password" placeholder="Repeat Password" name="psw-repeat" onkeyup="matchPassword()"> <span id='message'></span>
+                        </div>
+                        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms &amp; Privacy</a>.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-success" style="float:left">Sign Up</button>
+                        <button type="button" class="btn btn-default"> <a href="/">Cancel</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

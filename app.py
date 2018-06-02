@@ -23,10 +23,25 @@ def login():
       	return "INVALID LOGIN CREDENTIALS"
 
 
-
-@app.route('/register')
+@app.route('/newsignup',methods=['GET','POST'])
+def newsignup():
+   # print("hello")
+   if request.method == 'POST':
+      username = request.form['email']
+      password = request.form['psw']
+      passwordRepeat = request.form['psw-repeat']
+      print(username,password,passwordRepeat)
+      return "hello"
+@app.route('/signup')
 def register():
-	return render_template('register.html')
+   return render_template("signup.html")
+   # print("hello")
+   # if request.method == 'POST':
+   #    username = request.form['email']
+   #    password = request.form['psw']
+   #    passwordRepeat = request.form['psw-repeat']
+   #    print(username,password,passwordRepeat)
+   #    return "hello"
 
 @app.route('/home')
 def home():
