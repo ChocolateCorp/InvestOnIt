@@ -54,15 +54,27 @@ def home():
 
 @app.route('/page2')
 def page2():
-   return render_template('page2.html')
+   if (request.cookies.get('username') != ''):
+      username = request.cookies.get('username')
+      return render_template('page2.html',username=username)
+   else:
+      return render_template('page2.html')
 
 @app.route('/page3')
 def page3():
-   return render_template('page3.html')
+   if (request.cookies.get('username') != ''):
+      username = request.cookies.get('username')
+      return render_template('page3.html',username=username)
+   else:
+      return render_template('page3.html')
 
 @app.route('/page4')
 def page4():
-   return render_template('page4.html')
+   if (request.cookies.get('username') != ''):
+      username = request.cookies.get('username')
+      return render_template('page4.html',username=username)
+   else:
+      return render_template('page4.html')
 
 @app.route('/logout')
 def logout():

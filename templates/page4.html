@@ -5,6 +5,7 @@
     <title>Welcome</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static' ,filename='css/conatinerImg.css')}}" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -23,16 +24,21 @@
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">TYI</a>
+                <div class="containerImg">
+                    <img src="{{url_for('static',filename='images/user.png' )}}" alt="Avatar" class="image">
+                    <div class="middle">
+                        <div class="text">{{username}}</div>
+                    </div>
+                </div>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="home">Home</a></li>
+                <li class="active"><a href="#">Home</a></li>
                 <li><a href="page2">Amount invested/Investors</a></li>
                 <li><a href="page3">Amount spent/Transactions</a></li>
-                <li class="active"><a href="#">Balance/Project updates</a></li>
-                <li class="logout"><a href="/logout">Log out</a></li>
-                <li style="float: right;"><a href="#">{{username}}</a
+                <li><a href="page4">Balance/Project updates</a></li>
+                <li style="margin-left: 387px;"><a href="/logout">Log out</a
         ></li>
+        
     </ul>
   </div>
 </nav>
