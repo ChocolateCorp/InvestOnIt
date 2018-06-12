@@ -28,7 +28,10 @@ def login():
          return "INVALID LOGIN CREDENTIALS"
 
 
-      
+
+@app.route('/profile')
+def profile():
+   return  render_template('profile.html')
 
 
 @app.route('/newsignup',methods=['GET','POST'])
@@ -47,7 +50,9 @@ def newsignup():
 def register():
    return render_template("signup.html")
 
-
+@app.route('/myInvestment')
+def myInvestment():
+   return render_template('myInvestment.html')
 @app.route('/home')
 def home():
    return render_template('home.html')
